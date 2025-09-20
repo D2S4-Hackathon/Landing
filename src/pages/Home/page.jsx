@@ -4,6 +4,7 @@ import backgroundImage from "../../assets/images/background.png";
 import background2Image from "../../assets/images/background2.png";
 import background3Image from "../../assets/images/background3.png";
 import onierImage from "../../assets/images/ONIER.png";
+import onier2Image from "../../assets/images/ONier2.png";
 import groupImage from "../../assets/images/Group.png";
 import rectangleImage from "../../assets/images/Rectangle.png";
 import userSoundIcon from "../../assets/images/UserSound.png";
@@ -13,6 +14,8 @@ import PlugsIcon from "../../assets/images/PlugsConnected.png";
 import Group2Icon from "../../assets/images/Group2.png";
 import summationImage from "../../assets/images/summation.png";
 import Group3Icon from "../../assets/images/Group3.png";
+import Group4Icon from "../../assets/images/Group4.png";
+import Group5Icon from "../../assets/images/Group5.png";
 
 export default function Home() {
   const [visibleSections, setVisibleSections] = useState(new Set());
@@ -121,9 +124,12 @@ export default function Home() {
           <SolutionTitle>
             그래서 우리는 <HighlightText>다르게</HighlightText> 시작했습니다
           </SolutionTitle>
-          <ONIERLogo>ONIER</ONIERLogo>
-          <RectangleImage />
-          <ONIERSubtitle>On + Hear + ier</ONIERSubtitle>
+          <ONIERLogo>
+            <img src={onier2Image} alt="ONIER" />
+          </ONIERLogo>
+          <ONIERSubtitle>
+            On (전원을 켜다, 따뜻하다) + Hear (들을 수 있는 음성) + er (사람/역할)
+          </ONIERSubtitle>
           <SolutionDescription>
             ONier는 시각장애인 당사자의 목소리와 경험에서 출발했습니다. <br />
             이제 목소리 하나로 묻고, 즉시 요약된 답을 듣고, 필요하다면 다시 확인하며, <br />
@@ -217,6 +223,13 @@ export default function Home() {
           <Group3Image />
         </ContentWrapper>
       </SummationSection>
+
+      <QuestSection ref={(el) => (sectionRefs.current.quest = el)} id="quest">
+        <ContentWrapper $isVisible={visibleSections.has("quest")}>
+          <QuestTitle>새로운 탐색, 지금 확인하세요</QuestTitle>
+          <Group4Image />
+        </ContentWrapper>
+      </QuestSection>
     </Layout>
   );
 }
@@ -666,21 +679,24 @@ const ONIERLogo = styled.div`
   position: absolute;
   width: 487px;
   height: 255px;
-  left: 717px;
+  left: 750px;
   top: 304px;
-  font-family: "AppleSDGothicNeoH00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 162.464px;
-  line-height: 255px;
-  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const ONIERSubtitle = styled.div`
   position: absolute;
   width: 200px;
   height: 70px;
-  left: calc(50% - 200px / 2 + 9px);
+  left: calc(50% - 820px / 2 + 9px);
   top: 520px;
   font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-style: normal;
@@ -1086,4 +1102,38 @@ const Group3Image = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+`;
+
+const QuestSection = styled.div`
+  position: relative;
+  width: 1920px;
+  height: auto;
+  background: #ffffff;
+  overflow: hidden;
+`;
+
+const QuestTitle = styled.div`
+  position: absolute;
+  color: #000;
+  text-align: center;
+  font-family: "AppleSDGothicNeoH00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 90.743px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 143.453px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  white-space: nowrap;
+`;
+
+const Group4Image = styled.div`
+  position: relative;
+  width: 1920px;
+  height: 4900px;
+  background-image: url(${Group4Icon});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
 `;
