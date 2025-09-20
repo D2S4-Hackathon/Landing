@@ -9,6 +9,7 @@ import userSoundIcon from "../../assets/images/UserSound.png";
 import networkIcon from "../../assets/images/Network.png";
 import broadcastIcon from "../../assets/images/Broadcast.png";
 import PlugsIcon from "../../assets/images/PlugsConnected.png";
+import Group2Icon from "../../assets/images/Group2.png";
 
 export default function Home() {
   return (
@@ -147,6 +148,17 @@ export default function Home() {
           </FeatureCard>
         </FeatureCardGrid>
       </FeatureSection>
+
+      <FlowSection>
+        <FlowWhiteLine />
+        <FlowText>Service Flow</FlowText>
+        <FlowTitle>ONier, 이렇게 작동합니다</FlowTitle>
+        <FlowDescription>
+          목소리로 시작해, 요약으로 확인하고, 귀로 다시 확신하는 과정. <br />
+          누구나 따라올 수 있는 간단한 흐름으로 온전히 내 탐색을 완성합니다.
+        </FlowDescription>
+        <FlowIconGroup />
+      </FlowSection>
     </Layout>
   );
 }
@@ -831,6 +843,83 @@ const FeatureBroadcastIcon = styled.div`
   top: 196px;
   transform: translateX(-50%);
   background-image: url(${broadcastIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const FlowSection = styled.div`
+  position: relative;
+  width: 1920px;
+  height: 860px;
+  background: #000000;
+  overflow: hidden;
+`;
+
+const FlowWhiteLine = styled.div`
+  position: absolute;
+  width: 22px;
+  height: 5px;
+  left: calc(50% - 22px / 2);
+  top: 81px;
+  background: #ffffff;
+`;
+
+const FlowText = styled.div`
+  position: absolute;
+  width: 1289px;
+  height: 42px;
+  left: calc(50% - 1289px / 2);
+  top: 92px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 42px;
+  text-align: center;
+  color: #ffffff;
+  white-space: nowrap;
+`;
+
+const FlowTitle = styled.div`
+  position: absolute;
+  width: 538px;
+  height: 82px;
+  left: calc(50% - 538px / 2);
+  top: 144px;
+  font-family: "AppleSDGothicNeoH00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 51.8529px;
+  line-height: 82px;
+  text-align: center;
+  color: #ffffff;
+  white-space: nowrap;
+`;
+
+const FlowDescription = styled.div`
+  position: absolute;
+  width: 684px;
+  height: 84px;
+  left: calc(50% - 684px / 2);
+  top: 264px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 42px;
+  text-align: center;
+  color: #ffffff;
+  white-space: nowrap;
+`;
+
+const FlowIconGroup = styled.div`
+  position: absolute;
+  width: 1485px;
+  height: 311px;
+  left: calc(50% - 1485px / 2 + 0.5px);
+  top: 418px;
+  background-image: url(${Group2Icon});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
