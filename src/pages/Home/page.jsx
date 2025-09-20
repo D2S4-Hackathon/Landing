@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import backgroundImage from "../../assets/images/background.png";
 import background2Image from "../../assets/images/background2.png";
+import background3Image from "../../assets/images/background3.png";
 import onierImage from "../../assets/images/ONIER.png";
+import groupImage from "../../assets/images/Group.png";
 
 export default function Home() {
   return (
@@ -42,6 +44,33 @@ export default function Home() {
         </MainParagraph>
         <QuestionText>"왜 우리는 정보를 찾는 것조차 이렇게 힘들어야 합니까?"</QuestionText>
       </MainContainer>
+
+      <ProblemSection>
+        <ProblemBackground />
+        <ProblemGroup>
+          <ProblemBlackLine />
+          <ProblemText>Problem</ProblemText>
+        </ProblemGroup>
+        <ProblemTitle>편의는 있었지만, 자유는 없었습니다</ProblemTitle>
+        <ProblemDescription>
+          <ParagraphSection>
+            지금까지의 도구들은 대부분 비장애인의 시선에서 만들어졌습니다. <br />
+            읽어주고, 대신 알려주고, "이 정도면 됐다"는 듯 멈춰버린 서비스들. <br />
+            하지만 그것은 진짜 자유가 아니었습니다.
+          </ParagraphSection>
+          <ParagraphSection>
+            그 길은 언제나 타인의 속도와 방식을 따르는 경험이었습니다. <br />
+            시각장애인들이 원한 것은 단순했습니다.
+          </ParagraphSection>
+          <ParagraphSection>
+            남이 아닌 내가 주도하는 탐색의 자유. <br />
+            스스로 묻고, 듣고, 확인하며 선택하는 힘.
+          </ParagraphSection>
+        </ProblemDescription>
+        <IconGroup>
+          <GroupIcon />
+        </IconGroup>
+      </ProblemSection>
     </Layout>
   );
 }
@@ -312,4 +341,107 @@ const CaretRightIcon = styled.div`
     border: 0.5px solid #000000;
     clip-path: polygon(0 0, 100% 50%, 0 100%);
   }
+`;
+
+// Problem Section Styles
+const ProblemSection = styled.div`
+  position: relative;
+  width: 1920px;
+  height: 1165px;
+  background: #ffffff;
+  overflow: hidden;
+`;
+
+const ProblemBackground = styled.div`
+  position: absolute;
+  width: 3443.13px;
+  height: 1936.76px;
+  left: -1300px;
+  top: -300px;
+  background-image: url(${background3Image});
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
+const ProblemGroup = styled.div`
+  position: absolute;
+  width: 94px;
+  height: 53px;
+  left: calc(50% - 94px / 2 + 20px);
+  top: 150px;
+`;
+
+const ProblemBlackLine = styled.div`
+  position: absolute;
+  width: 22px;
+  height: 5px;
+  left: calc(50% - 22px / 2);
+  top: 50px;
+  background: #000000;
+`;
+
+const ProblemText = styled.div`
+  position: absolute;
+  width: 1289px;
+  height: 42px;
+  left: calc(50% - 1289px / 2 + 0.5px);
+  top: 61px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 42px;
+  text-align: center;
+  color: #000000;
+`;
+
+const ProblemTitle = styled.div`
+  position: absolute;
+  width: 893px;
+  height: 101px;
+  left: calc(50% - 893px / 2 + 19.5px);
+  top: 263px;
+  font-family: "AppleSDGothicNeoH00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 63.6942px;
+  line-height: 101px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
+`;
+
+const ProblemDescription = styled.div`
+  position: absolute;
+  width: 1289px;
+  height: 342px;
+  left: calc(50% - 1289px / 2 + 0.5px);
+  top: 392px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 42px;
+  text-align: center;
+  color: #000000;
+`;
+
+const IconGroup = styled.div`
+  position: absolute;
+  width: 563px;
+  height: 154px;
+  left: calc(50% - 563px / 2 + 0.5px);
+  top: 822px;
+`;
+
+const GroupIcon = styled.div`
+  position: absolute;
+  width: 563px;
+  height: 154px;
+  left: 0px;
+  top: 0px;
+  background-image: url(${groupImage});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
