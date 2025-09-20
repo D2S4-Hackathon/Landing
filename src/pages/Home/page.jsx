@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { useEffect, useRef, useState } from "react";
 import backgroundImage from "../../assets/images/background.png";
 import background2Image from "../../assets/images/background2.png";
 import background3Image from "../../assets/images/background3.png";
@@ -14,172 +15,222 @@ import summationImage from "../../assets/images/summation.png";
 import Group3Icon from "../../assets/images/Group3.png";
 
 export default function Home() {
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const sectionRefs = useRef({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => new Set([...prev, entry.target.id]));
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    Object.values(sectionRefs.current).forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Layout>
-      <HeroSection>
+      <HeroSection ref={(el) => (sectionRefs.current.hero = el)} id="hero">
         <HeroBackground />
         <ONIERBackgroundImage />
-        <OurServiceText>Our Service</OurServiceText>
-        <IntroWhiteLine />
-        <ONIERText>ONIER</ONIERText>
-        <SubtitleText>정보 탐색의 방식을 바꾸다</SubtitleText>
-        <InstallButton>
-          <ButtonText>온이어 설치하기</ButtonText>
-          <CaretRightIcon />
-        </InstallButton>
+        <ContentWrapper $isVisible={visibleSections.has("hero")}>
+          <OurServiceText>Our Service</OurServiceText>
+          <IntroWhiteLine />
+          <ONIERText>ONIER</ONIERText>
+          <SubtitleText>정보 탐색의 방식을 바꾸다</SubtitleText>
+          <InstallButton>
+            <ButtonText>온이어 설치하기</ButtonText>
+            <CaretRightIcon />
+          </InstallButton>
+        </ContentWrapper>
       </HeroSection>
 
-      <MainContainer>
+      <MainContainer ref={(el) => (sectionRefs.current.main = el)} id="main">
         <BackgroundImage />
-        <WhiteLine />
-        <BackgroundText>Background</BackgroundText>
-        <MainTitle>정보의 바다 앞에서, 누군가는 늘 멈춰야 했습니다.</MainTitle>
-        <MainParagraph>
-          <ParagraphSection>
-            우리 주변에는 언제나 조금 더 오래 걸리는 사람들이 있습니다. <br />
-            누구보다 먼저 움직이고 싶지만, 늘 한 발 늦게 도착할 수밖에 없는 사람들.
-          </ParagraphSection>
-          <ParagraphSection>
-            세상이 쏟아내는 정보의 늪 속에서 그들은 원하는 답 하나를 얻기 위해 <br />
-            수많은 단계를 거치고, 불필요한 길을 돌아야만 합니다. <br />
-            그들은 바로 시각장애인입니다.
-          </ParagraphSection>
-          <ParagraphSection>
-            검색 한 번, 클릭 한 번이 우리에게는 당연한 일상이지만, <br />
-            그들에게는 끝이 없을 것 같은 고단한 여정이 됩니다.
-          </ParagraphSection>
-          <SubParagraph>그리고 그 여정 끝에 그들은 이렇게 묻습니다.</SubParagraph>
-        </MainParagraph>
-        <QuestionText>"왜 우리는 정보를 찾는 것조차 이렇게 힘들어야 합니까?"</QuestionText>
+        <ContentWrapper $isVisible={visibleSections.has("main")}>
+          <WhiteLine />
+          <BackgroundText>Background</BackgroundText>
+          <MainTitle>정보의 바다 앞에서, 누군가는 늘 멈춰야 했습니다.</MainTitle>
+          <MainParagraph>
+            <ParagraphSection>
+              우리 주변에는 언제나 조금 더 오래 걸리는 사람들이 있습니다. <br />
+              누구보다 먼저 움직이고 싶지만, 늘 한 발 늦게 도착할 수밖에 없는 사람들.
+            </ParagraphSection>
+            <ParagraphSection>
+              세상이 쏟아내는 정보의 늪 속에서 그들은 원하는 답 하나를 얻기 위해 <br />
+              수많은 단계를 거치고, 불필요한 길을 돌아야만 합니다. <br />
+              그들은 바로 시각장애인입니다.
+            </ParagraphSection>
+            <ParagraphSection>
+              검색 한 번, 클릭 한 번이 우리에게는 당연한 일상이지만, <br />
+              그들에게는 끝이 없을 것 같은 고단한 여정이 됩니다.
+            </ParagraphSection>
+            <SubParagraph>그리고 그 여정 끝에 그들은 이렇게 묻습니다.</SubParagraph>
+          </MainParagraph>
+          <QuestionText>"왜 우리는 정보를 찾는 것조차 이렇게 힘들어야 합니까?"</QuestionText>
+        </ContentWrapper>
       </MainContainer>
 
-      <ProblemSection>
+      <ProblemSection ref={(el) => (sectionRefs.current.problem = el)} id="problem">
         <ProblemBackground />
-        <ProblemGroup>
-          <ProblemBlackLine />
-          <ProblemText>Problem</ProblemText>
-        </ProblemGroup>
-        <ProblemTitle>편의는 있었지만, 자유는 없었습니다</ProblemTitle>
-        <ProblemDescription>
-          <ParagraphSection>
-            지금까지의 도구들은 대부분 비장애인의 시선에서 만들어졌습니다. <br />
-            읽어주고, 대신 알려주고, "이 정도면 됐다"는 듯 멈춰버린 서비스들. <br />
-            하지만 그것은 진짜 자유가 아니었습니다.
-          </ParagraphSection>
-          <ParagraphSection>
-            그 길은 언제나 타인의 속도와 방식을 따르는 경험이었습니다. <br />
-            시각장애인들이 원한 것은 단순했습니다.
-          </ParagraphSection>
-          <ParagraphSection>
-            남이 아닌 내가 주도하는 탐색의 자유. <br />
-            스스로 묻고, 듣고, 확인하며 선택하는 힘.
-          </ParagraphSection>
-        </ProblemDescription>
-        <IconGroup>
-          <GroupIcon />
-        </IconGroup>
+        <ContentWrapper $isVisible={visibleSections.has("problem")}>
+          <ProblemGroup>
+            <ProblemBlackLine />
+            <ProblemText>Problem</ProblemText>
+          </ProblemGroup>
+          <ProblemTitle>편의는 있었지만, 자유는 없었습니다</ProblemTitle>
+          <ProblemDescription>
+            <ParagraphSection>
+              지금까지의 도구들은 대부분 비장애인의 시선에서 만들어졌습니다. <br />
+              읽어주고, 대신 알려주고, "이 정도면 됐다"는 듯 멈춰버린 서비스들. <br />
+              하지만 그것은 진짜 자유가 아니었습니다.
+            </ParagraphSection>
+            <ParagraphSection>
+              그 길은 언제나 타인의 속도와 방식을 따르는 경험이었습니다. <br />
+              시각장애인들이 원한 것은 단순했습니다.
+            </ParagraphSection>
+            <ParagraphSection>
+              남이 아닌 내가 주도하는 탐색의 자유. <br />
+              스스로 묻고, 듣고, 확인하며 선택하는 힘.
+            </ParagraphSection>
+          </ProblemDescription>
+          <IconGroup>
+            <GroupIcon />
+          </IconGroup>
+        </ContentWrapper>
       </ProblemSection>
 
-      <SolutionSection>
-        <SolutionGroup>
-          <ProblemBlackLine />
-          <SolutionText>Solution</SolutionText>
-        </SolutionGroup>
-        <SolutionTitle>
-          그래서 우리는 <HighlightText>다르게</HighlightText> 시작했습니다
-        </SolutionTitle>
-        <ONIERLogo>ONIER</ONIERLogo>
-        <RectangleImage />
-        <ONIERSubtitle>On + Hear + ier</ONIERSubtitle>
-        <SolutionDescription>
-          ONier는 시각장애인 당사자의 목소리와 경험에서 출발했습니다. <br />
-          이제 목소리 하나로 묻고, 즉시 요약된 답을 듣고, 필요하다면 다시 확인하며, <br />
-          탐색의 과정을 스스로 남길 수 있습니다. <br />
-          이것은 단순한 편의가 아니라, 정보 탐색을 '내 것'으로 되찾는 경험입니다.
-        </SolutionDescription>
+      <SolutionSection ref={(el) => (sectionRefs.current.solution = el)} id="solution">
+        <ContentWrapper $isVisible={visibleSections.has("solution")}>
+          <SolutionGroup>
+            <ProblemBlackLine />
+            <SolutionText>Solution</SolutionText>
+          </SolutionGroup>
+          <SolutionTitle>
+            그래서 우리는 <HighlightText>다르게</HighlightText> 시작했습니다
+          </SolutionTitle>
+          <ONIERLogo>ONIER</ONIERLogo>
+          <RectangleImage />
+          <ONIERSubtitle>On + Hear + ier</ONIERSubtitle>
+          <SolutionDescription>
+            ONier는 시각장애인 당사자의 목소리와 경험에서 출발했습니다. <br />
+            이제 목소리 하나로 묻고, 즉시 요약된 답을 듣고, 필요하다면 다시 확인하며, <br />
+            탐색의 과정을 스스로 남길 수 있습니다. <br />
+            이것은 단순한 편의가 아니라, 정보 탐색을 '내 것'으로 되찾는 경험입니다.
+          </SolutionDescription>
+        </ContentWrapper>
       </SolutionSection>
 
-      <FeatureSection>
-        <FeatureDescription>
-          말로 묻고, 요약으로 확인하고, 귀로 듣는 경험. <br />
-          ONier는 누구에게나 쉽고 빠른 정보 접근을 가능하게 하는 대화형 탐색 도구입니다.
-        </FeatureDescription>
-        <FeatureTitle>
-          ONier는 <HighlightText>4가지 방식</HighlightText>으로 탐색을 새롭게 만듭니다
-        </FeatureTitle>
-        <FeatureGroup>
-          <FeatureBlackLine />
-          <FeatureText>Main Feature</FeatureText>
-        </FeatureGroup>
-        <FeatureCardGrid>
-          <FeatureCard>
-            <FeatureNumber>01</FeatureNumber>
-            <FeatureCardTitle>음성 대화형 검색</FeatureCardTitle>
-            <FeatureUserSoundIcon />
-            <FeatureCardDescription>
-              복잡한 검색어 입력 대신 대화하듯 질문하세요. <br />
-              필요한 정보가 즉시 제공됩니다.
-            </FeatureCardDescription>
-          </FeatureCard>
-          <FeatureCard>
-            <FeatureNumber>02</FeatureNumber>
-            <FeatureCardTitle>페이지 요약</FeatureCardTitle>
-            <FeatureNetworkIcon />
-            <FeatureCardDescription>
-              긴 글을 일일이 읽을 필요 없습니다. <br />
-              버튼 한 번으로 페이지의 중요한 내용만 요약해드립니다.
-            </FeatureCardDescription>
-          </FeatureCard>
-          <FeatureCard>
-            <FeatureNumber>03</FeatureNumber>
-            <FeatureCardTitle>추가 검색</FeatureCardTitle>
-            <FeatureBroadcastIcon />
-            <FeatureCardDescription>
-              번거롭고 귀찮은 탐색 과정없이 <br />
-              자동으로 사이트 이동까지 모두 가능합니다.
-            </FeatureCardDescription>
-          </FeatureCard>
-          <FeatureCard>
-            <FeatureNumber>04</FeatureNumber>
-            <FeatureCardTitle>최적의 정보 제공</FeatureCardTitle>
-            <PlugsConnectedIcon />
-            <FeatureCardDescription>
-              번거롭고 귀찮은 탐색 과정없이 <br />
-              자동으로 사이트 이동까지 모두 가능합니다.
-            </FeatureCardDescription>
-          </FeatureCard>
-        </FeatureCardGrid>
+      <FeatureSection ref={(el) => (sectionRefs.current.feature = el)} id="feature">
+        <ContentWrapper $isVisible={visibleSections.has("feature")}>
+          <FeatureDescription>
+            말로 묻고, 요약으로 확인하고, 귀로 듣는 경험. <br />
+            ONier는 누구에게나 쉽고 빠른 정보 접근을 가능하게 하는 대화형 탐색 도구입니다.
+          </FeatureDescription>
+          <FeatureTitle>
+            ONier는 <HighlightText>4가지 방식</HighlightText>으로 탐색을 새롭게 만듭니다
+          </FeatureTitle>
+          <FeatureGroup>
+            <FeatureBlackLine />
+            <FeatureText>Main Feature</FeatureText>
+          </FeatureGroup>
+          <FeatureCardGrid>
+            <FeatureCard>
+              <FeatureNumber>01</FeatureNumber>
+              <FeatureCardTitle>음성 대화형 검색</FeatureCardTitle>
+              <FeatureUserSoundIcon />
+              <FeatureCardDescription>
+                복잡한 검색어 입력 대신 대화하듯 질문하세요. <br />
+                필요한 정보가 즉시 제공됩니다.
+              </FeatureCardDescription>
+            </FeatureCard>
+            <FeatureCard>
+              <FeatureNumber>02</FeatureNumber>
+              <FeatureCardTitle>페이지 요약</FeatureCardTitle>
+              <FeatureNetworkIcon />
+              <FeatureCardDescription>
+                긴 글을 일일이 읽을 필요 없습니다. <br />
+                버튼 한 번으로 페이지의 중요한 내용만 요약해드립니다.
+              </FeatureCardDescription>
+            </FeatureCard>
+            <FeatureCard>
+              <FeatureNumber>03</FeatureNumber>
+              <FeatureCardTitle>추가 검색</FeatureCardTitle>
+              <FeatureBroadcastIcon />
+              <FeatureCardDescription>
+                번거롭고 귀찮은 탐색 과정없이 <br />
+                자동으로 사이트 이동까지 모두 가능합니다.
+              </FeatureCardDescription>
+            </FeatureCard>
+            <FeatureCard>
+              <FeatureNumber>04</FeatureNumber>
+              <FeatureCardTitle>최적의 정보 제공</FeatureCardTitle>
+              <PlugsConnectedIcon />
+              <FeatureCardDescription>
+                번거롭고 귀찮은 탐색 과정없이 <br />
+                자동으로 사이트 이동까지 모두 가능합니다.
+              </FeatureCardDescription>
+            </FeatureCard>
+          </FeatureCardGrid>
+        </ContentWrapper>
       </FeatureSection>
 
-      <FlowSection>
-        <FlowWhiteLine />
-        <FlowText>Service Flow</FlowText>
-        <FlowTitle>ONier, 이렇게 작동합니다</FlowTitle>
-        <FlowDescription>
-          목소리로 시작해, 요약으로 확인하고, 귀로 다시 확신하는 과정. <br />
-          누구나 따라올 수 있는 간단한 흐름으로 온전히 내 탐색을 완성합니다.
-        </FlowDescription>
-        <FlowIconGroup />
+      <FlowSection ref={(el) => (sectionRefs.current.flow = el)} id="flow">
+        <ContentWrapper $isVisible={visibleSections.has("flow")}>
+          <FlowWhiteLine />
+          <FlowText>Service Flow</FlowText>
+          <FlowTitle>ONier, 이렇게 작동합니다</FlowTitle>
+          <FlowDescription>
+            목소리로 시작해, 요약으로 확인하고, 귀로 다시 확신하는 과정. <br />
+            누구나 따라올 수 있는 간단한 흐름으로 온전히 내 탐색을 완성합니다.
+          </FlowDescription>
+          <FlowIconGroup />
+        </ContentWrapper>
       </FlowSection>
 
-      <SummationSection>
-        <SummationGroup>
-          <FeatureBlackLine />
-          <SummationText>Technology</SummationText>
-        </SummationGroup>
-        <SummationTitle>AI로 더 빠르고, 더 정확하게, ONier의 핵심 기술</SummationTitle>
-        <SummationDescription>
-          AI가 검색 결과와 페이지 본문을 분석해 핵심만 요약하고, 이를 즉시 음성으로 제공합니다.{" "}
-          <br />
-          불필요한 내용에 시간을 낭비하지 않고, 필요한 답만 빠르게 얻을 수 있는 최적의 탐색 경험을
-          제공합니다.
-        </SummationDescription>
+      <SummationSection ref={(el) => (sectionRefs.current.summation = el)} id="summation">
         <SummationImage />
-        <Group3Image />
+        <ContentWrapper $isVisible={visibleSections.has("summation")}>
+          <SummationGroup>
+            <FeatureBlackLine />
+            <SummationText>Technology</SummationText>
+          </SummationGroup>
+          <SummationTitle>AI로 더 빠르고, 더 정확하게, ONier의 핵심 기술</SummationTitle>
+          <SummationDescription>
+            AI가 검색 결과와 페이지 본문을 분석해 핵심만 요약하고, 이를 즉시 음성으로 제공합니다.{" "}
+            <br />
+            불필요한 내용에 시간을 낭비하지 않고, 필요한 답만 빠르게 얻을 수 있는 최적의 탐색 경험을
+            제공합니다.
+          </SummationDescription>
+          <Group3Image />
+        </ContentWrapper>
       </SummationSection>
     </Layout>
   );
 }
+
+const slideUpAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 const Layout = styled.div`
   padding: 0;
@@ -187,6 +238,16 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+// 콘텐츠만 애니메이션을 받는 래퍼
+const ContentWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+  transform: ${(props) => (props.$isVisible ? "translateY(0)" : "translateY(50px)")};
+  animation: ${(props) => (props.$isVisible ? slideUpAnimation : "none")} 0.8s ease-out;
 `;
 
 const MainContainer = styled.div`
@@ -826,7 +887,6 @@ const PlugsConnectedIcon = styled.div`
   background-position: center;
 `;
 
-// 기존 아이콘들을 FeatureCard 내에서 사용할 수 있도록 수정
 const FeatureUserSoundIcon = styled.div`
   position: absolute;
   width: 160.47px;
