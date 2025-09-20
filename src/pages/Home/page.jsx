@@ -1,9 +1,24 @@
 import styled from "styled-components";
 import backgroundImage from "../../assets/images/background.png";
+import background2Image from "../../assets/images/background2.png";
+import onierImage from "../../assets/images/ONIER.png";
 
 export default function Home() {
   return (
     <Layout>
+      <HeroSection>
+        <HeroBackground />
+        <ONIERBackgroundImage />
+        <OurServiceText>Our Service</OurServiceText>
+        <IntroWhiteLine />
+        <ONIERText>ONIER</ONIERText>
+        <SubtitleText>정보 탐색의 방식을 바꾸다</SubtitleText>
+        <InstallButton>
+          <ButtonText>온이어 설치하기</ButtonText>
+          <CaretRightIcon />
+        </InstallButton>
+      </HeroSection>
+
       <MainContainer>
         <BackgroundImage />
         <WhiteLine />
@@ -66,6 +81,15 @@ const WhiteLine = styled.div`
   left: 950px;
   top: 8.5rem;
   background: #ffffff;
+`;
+
+const IntroWhiteLine = styled.div`
+  position: absolute;
+  width: 31px;
+  height: 9.5px;
+  left: 950px;
+  top: 37.5rem;
+  background: #626262;
 `;
 
 const BackgroundText = styled.div`
@@ -147,4 +171,145 @@ const QuestionText = styled.div`
   text-align: center;
   color: #00eeff;
   white-space: nowrap;
+`;
+
+// Hero Section Styles
+const HeroSection = styled.div`
+  position: relative;
+  width: 1920px;
+  height: 1226px;
+  background: #000000;
+  overflow: hidden;
+`;
+
+const HeroBackground = styled.div`
+  position: absolute;
+  width: 1920px;
+  height: 980px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(${background2Image});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
+const ONIERBackgroundImage = styled.div`
+  position: absolute;
+  width: 1720px;
+  height: 1096px;
+  left: calc(50% - 1720px / 2 + 0.5px);
+  top: -355px;
+  background-image: url(${onierImage});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+`;
+
+const OurServiceText = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 42px;
+  left: 0;
+  top: 22rem;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 42px;
+  text-align: center;
+  color: #626262;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ONIERText = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 82px;
+  left: 0;
+  top: 26rem;
+  font-family: "AppleSDGothicNeoEB00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 101.333px;
+  line-height: 82px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const SubtitleText = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 82px;
+  left: 0;
+  top: 40.5rem;
+  font-family: "AppleSDGothicNeoEB00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 101.333px;
+  line-height: 82px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const InstallButton = styled.div`
+  position: absolute;
+  width: 266px;
+  height: 83px;
+  left: calc(50% - 266px / 2);
+  top: 1057px;
+  background: #7667ff;
+  border-radius: 37.395px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #5a4bff;
+    transform: translateY(-2px);
+  }
+`;
+
+const ButtonText = styled.div`
+  font-family: "AppleSDGothicNeoSB00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 42px;
+  text-align: center;
+  color: #000000;
+`;
+
+const CaretRightIcon = styled.div`
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 1040px;
+  top: 1173px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 34.37%;
+    right: 28.12%;
+    top: 15.62%;
+    bottom: 15.62%;
+    background: #000000;
+    border: 0.5px solid #000000;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
 `;
