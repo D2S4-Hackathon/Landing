@@ -4,6 +4,7 @@ import background2Image from "../../assets/images/background2.png";
 import background3Image from "../../assets/images/background3.png";
 import onierImage from "../../assets/images/ONIER.png";
 import groupImage from "../../assets/images/Group.png";
+import rectangleImage from "../../assets/images/Rectangle.png";
 
 export default function Home() {
   return (
@@ -71,6 +72,25 @@ export default function Home() {
           <GroupIcon />
         </IconGroup>
       </ProblemSection>
+
+      <SolutionSection>
+        <SolutionGroup>
+          <ProblemBlackLine />
+          <SolutionText>Solution</SolutionText>
+        </SolutionGroup>
+        <SolutionTitle>
+          그래서 우리는 <HighlightText>다르게</HighlightText> 시작했습니다
+        </SolutionTitle>
+        <ONIERLogo>ONIER</ONIERLogo>
+        <RectangleImage />
+        <ONIERSubtitle>On + Hear + ier</ONIERSubtitle>
+        <SolutionDescription>
+          ONier는 시각장애인 당사자의 목소리와 경험에서 출발했습니다. <br />
+          이제 목소리 하나로 묻고, 즉시 요약된 답을 듣고, 필요하다면 다시 확인하며, <br />
+          탐색의 과정을 스스로 남길 수 있습니다. <br />
+          이것은 단순한 편의가 아니라, 정보 탐색을 '내 것'으로 되찾는 경험입니다.
+        </SolutionDescription>
+      </SolutionSection>
     </Layout>
   );
 }
@@ -444,4 +464,115 @@ const GroupIcon = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+`;
+
+// Solution Section Styles
+const SolutionSection = styled.div`
+  position: relative;
+  width: 1920px;
+  height: 1019px;
+  background: #e4e4e4;
+  overflow: hidden;
+`;
+
+const SolutionGroup = styled.div`
+  position: absolute;
+  width: 92px;
+  height: 53px;
+  left: calc(50% - 92px / 2 + 20px);
+  top: 127px;
+`;
+
+const SolutionText = styled.div`
+  position: absolute;
+  width: 1289px;
+  height: 42px;
+  left: calc(50% - 1289px / 2 + 0.5px);
+  top: 61px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 42px;
+  text-align: center;
+  color: #000000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);'
+`;
+
+const SolutionTitle = styled.div`
+  position: absolute;
+  width: 877px;
+  height: 101px;
+  left: calc(50% - 877px / 2 + 19.5px);
+  top: 243px;
+  font-family: "AppleSDGothicNeoH00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 63.6942px;
+  line-height: 101px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
+`;
+
+const ONIERLogo = styled.div`
+  position: absolute;
+  width: 487px;
+  height: 255px;
+  left: 717px;
+  top: 304px;
+  font-family: "AppleSDGothicNeoH00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 162.464px;
+  line-height: 255px;
+  color: #000000;
+`;
+
+const ONIERSubtitle = styled.div`
+  position: absolute;
+  width: 200px;
+  height: 70px;
+  left: calc(50% - 200px / 2 + 9px);
+  top: 520px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 70px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
+`;
+
+const RectangleImage = styled.div`
+  position: absolute;
+  width: 582px;
+  height: 75px;
+  left: 678px;
+  top: 447px;
+  background-image: url(${rectangleImage});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const HighlightText = styled.span`
+  color: #4c00ff;
+`;
+
+const SolutionDescription = styled.div`
+  position: absolute;
+  width: 888px;
+  height: 280px;
+  left: calc(50% - 888px / 2);
+  top: 651px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 70px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
 `;
