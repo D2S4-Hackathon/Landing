@@ -5,6 +5,10 @@ import background3Image from "../../assets/images/background3.png";
 import onierImage from "../../assets/images/ONIER.png";
 import groupImage from "../../assets/images/Group.png";
 import rectangleImage from "../../assets/images/Rectangle.png";
+import userSoundIcon from "../../assets/images/UserSound.png";
+import networkIcon from "../../assets/images/Network.png";
+import broadcastIcon from "../../assets/images/Broadcast.png";
+import PlugsIcon from "../../assets/images/PlugsConnected.png";
 
 export default function Home() {
   return (
@@ -91,6 +95,58 @@ export default function Home() {
           이것은 단순한 편의가 아니라, 정보 탐색을 '내 것'으로 되찾는 경험입니다.
         </SolutionDescription>
       </SolutionSection>
+
+      <FeatureSection>
+        <FeatureDescription>
+          말로 묻고, 요약으로 확인하고, 귀로 듣는 경험. <br />
+          ONier는 누구에게나 쉽고 빠른 정보 접근을 가능하게 하는 대화형 탐색 도구입니다.
+        </FeatureDescription>
+        <FeatureTitle>
+          ONier는 <HighlightText>4가지 방식</HighlightText>으로 탐색을 새롭게 만듭니다
+        </FeatureTitle>
+        <FeatureGroup>
+          <FeatureBlackLine />
+          <FeatureText>Main Feature</FeatureText>
+        </FeatureGroup>
+        <FeatureCardGrid>
+          <FeatureCard>
+            <FeatureNumber>01</FeatureNumber>
+            <FeatureCardTitle>음성 대화형 검색</FeatureCardTitle>
+            <FeatureUserSoundIcon />
+            <FeatureCardDescription>
+              복잡한 검색어 입력 대신 대화하듯 질문하세요. <br />
+              필요한 정보가 즉시 제공됩니다.
+            </FeatureCardDescription>
+          </FeatureCard>
+          <FeatureCard>
+            <FeatureNumber>02</FeatureNumber>
+            <FeatureCardTitle>페이지 요약</FeatureCardTitle>
+            <FeatureNetworkIcon />
+            <FeatureCardDescription>
+              긴 글을 일일이 읽을 필요 없습니다. <br />
+              버튼 한 번으로 페이지의 중요한 내용만 요약해드립니다.
+            </FeatureCardDescription>
+          </FeatureCard>
+          <FeatureCard>
+            <FeatureNumber>03</FeatureNumber>
+            <FeatureCardTitle>추가 검색</FeatureCardTitle>
+            <FeatureBroadcastIcon />
+            <FeatureCardDescription>
+              번거롭고 귀찮은 탐색 과정없이 <br />
+              자동으로 사이트 이동까지 모두 가능합니다.
+            </FeatureCardDescription>
+          </FeatureCard>
+          <FeatureCard>
+            <FeatureNumber>04</FeatureNumber>
+            <FeatureCardTitle>최적의 정보 제공</FeatureCardTitle>
+            <PlugsConnectedIcon />
+            <FeatureCardDescription>
+              번거롭고 귀찮은 탐색 과정없이 <br />
+              자동으로 사이트 이동까지 모두 가능합니다.
+            </FeatureCardDescription>
+          </FeatureCard>
+        </FeatureCardGrid>
+      </FeatureSection>
     </Layout>
   );
 }
@@ -575,4 +631,207 @@ const SolutionDescription = styled.div`
   text-align: center;
   color: #000000;
   white-space: nowrap;
+`;
+
+const FeatureSection = styled.div`
+  position: relative;
+  width: 1920px;
+  height: 1912px;
+  background: #ffffff;
+  overflow: hidden;
+`;
+
+const FeatureDescription = styled.div`
+  position: absolute;
+  width: 809px;
+  height: 84px;
+  left: calc(50% - 809px / 2 + 0.5px);
+  top: 372px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 42px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
+`;
+
+const FeatureTitle = styled.div`
+  position: absolute;
+  width: 1002px;
+  height: 82px;
+  left: calc(50% - 1002px / 2);
+  top: 271px;
+  font-family: "AppleSDGothicNeoH00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 51.8529px;
+  line-height: 82px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
+`;
+
+const FeatureGroup = styled.div`
+  position: absolute;
+  width: 148px;
+  height: 53px;
+  left: calc(50% - 148px / 2);
+  top: 218px;
+`;
+
+const FeatureBlackLine = styled.div`
+  position: absolute;
+  width: 22px;
+  height: 5px;
+  left: calc(50% - 22px / 2);
+  top: 0px;
+  background: #000000;
+`;
+
+const FeatureText = styled.div`
+  position: absolute;
+  width: 148px;
+  height: 42px;
+  left: calc(50% - 148px / 2);
+  top: 11px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 42px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
+`;
+
+const FeatureCardGrid = styled.div`
+  position: absolute;
+  width: 1516px;
+  height: 1141px;
+  left: calc(50% - 1516px / 2);
+  top: 546px;
+  filter: drop-shadow(4px 9px 10px rgba(0, 0, 0, 0.05));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px;
+`;
+
+const FeatureCard = styled.div`
+  box-sizing: border-box;
+  position: relative;
+  width: 739px;
+  height: 553px;
+  background: #f5f5f5;
+  border: 1.12217px solid rgba(0, 0, 0, 0.19);
+  border-radius: 16.8326px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+`;
+
+const FeatureNumber = styled.div`
+  position: absolute;
+  width: 29px;
+  height: 48px;
+  left: 50%;
+  top: 36px;
+  transform: translateX(-50%);
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28.0543px;
+  line-height: 47px;
+  text-align: center;
+  color: #747474;
+`;
+
+const FeatureCardTitle = styled.div`
+  position: absolute;
+  width: 229px;
+  height: 59px;
+  left: 50%;
+  top: 96px;
+  transform: translateX(-50%);
+  font-family: "AppleSDGothicNeoEB00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 34.7339px;
+  line-height: 58px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
+`;
+
+const FeatureCardDescription = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 97px;
+  left: 50%;
+  top: 391px;
+  transform: translateX(-50%);
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28.0543px;
+  line-height: 48px;
+  text-align: center;
+  color: #000000;
+`;
+
+const PlugsConnectedIcon = styled.div`
+  position: absolute;
+  width: 148px;
+  height: 148px;
+  left: 50%;
+  top: 196px;
+  transform: translateX(-50%);
+  background-image: url(${PlugsIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+// 기존 아이콘들을 FeatureCard 내에서 사용할 수 있도록 수정
+const FeatureUserSoundIcon = styled.div`
+  position: absolute;
+  width: 160.47px;
+  height: 160.47px;
+  left: 50%;
+  top: 196px;
+  transform: translateX(-50%);
+  background-image: url(${userSoundIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const FeatureNetworkIcon = styled.div`
+  position: absolute;
+  width: 145.88px;
+  height: 145.88px;
+  left: 50%;
+  top: 203px;
+  transform: translateX(-50%);
+  background-image: url(${networkIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const FeatureBroadcastIcon = styled.div`
+  position: absolute;
+  width: 145.88px;
+  height: 145.88px;
+  left: 50%;
+  top: 196px;
+  transform: translateX(-50%);
+  background-image: url(${broadcastIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
