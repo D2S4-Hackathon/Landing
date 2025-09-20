@@ -169,7 +169,7 @@ const QuestionText = styled.div`
   font-size: 38.27px;
   line-height: 61px;
   text-align: center;
-  color: #00eeff;
+  color: #9c92ff;
   white-space: nowrap;
 `;
 
