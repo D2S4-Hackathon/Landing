@@ -10,6 +10,8 @@ import networkIcon from "../../assets/images/Network.png";
 import broadcastIcon from "../../assets/images/Broadcast.png";
 import PlugsIcon from "../../assets/images/PlugsConnected.png";
 import Group2Icon from "../../assets/images/Group2.png";
+import summationImage from "../../assets/images/summation.png";
+import Group3Icon from "../../assets/images/Group3.png";
 
 export default function Home() {
   return (
@@ -159,6 +161,22 @@ export default function Home() {
         </FlowDescription>
         <FlowIconGroup />
       </FlowSection>
+
+      <SummationSection>
+        <SummationGroup>
+          <FeatureBlackLine />
+          <SummationText>Technology</SummationText>
+        </SummationGroup>
+        <SummationTitle>AI로 더 빠르고, 더 정확하게, ONier의 핵심 기술</SummationTitle>
+        <SummationDescription>
+          AI가 검색 결과와 페이지 본문을 분석해 핵심만 요약하고, 이를 즉시 음성으로 제공합니다.{" "}
+          <br />
+          불필요한 내용에 시간을 낭비하지 않고, 필요한 답만 빠르게 얻을 수 있는 최적의 탐색 경험을
+          제공합니다.
+        </SummationDescription>
+        <SummationImage />
+        <Group3Image />
+      </SummationSection>
     </Layout>
   );
 }
@@ -920,6 +938,91 @@ const FlowIconGroup = styled.div`
   left: calc(50% - 1485px / 2 + 0.5px);
   top: 418px;
   background-image: url(${Group2Icon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const SummationSection = styled.div`
+  position: relative;
+  width: 1920px;
+  height: 1800px;
+  background: #ffffff;
+  overflow: hidden;
+`;
+
+const SummationGroup = styled.div`
+  position: absolute;
+  width: 94px;
+  height: 53px;
+  left: calc(50% - 94px / 2 + 20px);
+  top: 74px;
+`;
+
+const SummationText = styled.div`
+  position: absolute;
+  width: 538px;
+  height: 42px;
+  left: calc(50% - 538px / 2);
+  top: 11px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 42px;
+  text-align: center;
+  color: #000000;
+`;
+
+const SummationTitle = styled.div`
+  position: absolute;
+  width: 986px;
+  height: 82px;
+  left: calc(50% - 986px / 2 + 20px);
+  top: 142px;
+  font-family: "AppleSDGothicNeoH00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 51.8529px;
+  line-height: 82px;
+  text-align: center;
+  color: #000000;
+  white-space: nowrap;
+`;
+
+const SummationDescription = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 84px;
+  top: 266px;
+  font-family: "AppleSDGothicNeoM00", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 42px;
+  text-align: center;
+  color: #000000;
+`;
+
+const SummationImage = styled.div`
+  position: absolute;
+  width: 1501px;
+  height: 1423.6px;
+  left: calc(50% - 1501px / 2 - 33.5px);
+  top: 74px;
+  background-image: url(${summationImage});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const Group3Image = styled.div`
+  position: absolute;
+  width: 1501px;
+  height: 400px;
+  left: calc(50% - 1501px / 2 - 33.5px);
+  top: 1200px;
+  background-image: url(${Group3Icon});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
